@@ -7,6 +7,7 @@ RUN apt-get -y update \
     ### Remove temporary download file
     && rm -rf /var/lib/apt/lists/*
 
+WORKDIR /email_server
 # get packages
 COPY requirements.txt .
 RUN pip install -r requirements.txt
@@ -15,9 +16,6 @@ RUN pip install -r requirements.txt
 ENV PYTHONUNBUFFERED=1
 # Enable Profiler
 ENV ENABLE_PROFILER=1
-
-###Create working directory for image
-WORKDIR /email_server
 
 # Grab packages from builder ###???????????#####
 
